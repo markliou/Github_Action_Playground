@@ -31,3 +31,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      # Run the python script for test 
+      - name: install TF
+        run: |
+          pip3 install tensorflow -y
+          pip3 install tensorflow-addons -y
+          pip3 install tensorflow-datasets -y
+      - name: run the TF scripts
+        run: python3 
