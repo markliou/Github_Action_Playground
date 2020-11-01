@@ -14,6 +14,8 @@ on:
 jobs:
   # This workflow contains a single job called "TF_runer"
   TF_runer:
+    # setting the custermized container
+    container: markliou/python3-tensorflow-gpu:latest
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
 
