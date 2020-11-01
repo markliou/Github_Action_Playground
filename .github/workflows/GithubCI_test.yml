@@ -36,7 +36,7 @@ jobs:
 
       # Run the python script for test 
       - name: update the ubuntu 
-        run: sudo apt update -y; sudo apt upgrade -y; sudo apt install python3-pip
+        run: sudo apt update -y; sudo apt upgrade -y; sudo apt install python3-pip sudo
       - name: install TF
         run: |
           pip3 install tensorflow 
