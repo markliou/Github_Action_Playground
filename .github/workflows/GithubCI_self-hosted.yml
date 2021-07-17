@@ -1,0 +1,71 @@
+# This is a basic workflow to help you get started with Actions
+
+name: testGithubCI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow is from github example
+  # The type of runner that the job will run on
+  github_example:
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+      # Run the python script for test 
+      # The github actions give the container which provides sudo without password
+      - name: update the ubuntu 
+        run: sudo apt update -y; sudo apt upgrade -y; sudo apt install python3-pip
+      - name: install TF
+        run: |
+          pip3 install tensorflow 
+          pip3 install tensorflow-addons 
+          pip3 install tensorflow-datasets 
+      - name: run the TF scripts
+        run: python3 hello.py
+
+    
+  # This workflow contains a single job called "TF_runer"
+  TF_runer:
+    # setting the custermized container
+    container: 
+      image: markliou/python3-tensorflow-gpu:latest
+      options: --cpus 1
+      ports: 
+        - 6666
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # install the essential package
+      - name: install TF package
+        run: |
+          pip3 install tensorflow-addons 
+          pip3 install tensorflow-datasets 
+      # Run the python script for test 
+      - name: run the TF scripts
+        run: python3 hello.py
