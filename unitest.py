@@ -5,7 +5,7 @@ def cal_10times(x):
 pass 
 
 def main():
-    assert cal_10times(3) == 3
+    assert cal_10times(3) == 30
 pass
 
 if __name__ == '__main__':
