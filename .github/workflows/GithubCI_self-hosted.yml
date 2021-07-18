@@ -32,3 +32,6 @@ jobs:
       # Run the python script for test 
       - name: run the TF scripts
         run: python3 hello.py
+      # run the python unit test play script
+      - name: run the unit test
+        run: python3 unitest.py
