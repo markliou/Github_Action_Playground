@@ -44,12 +44,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Dockerhub login
-        env:
-          DOCKER_ACCOUNT: ${{secrets.DOCKER_ACCOUNT}}
-          DOCKER_PASSWD: ${{secrets.DOCKER_PASSWD}}
-        run: |
-          docker login -u DOCKER_ACCOUNT -p DOCKER_PASSWD
+      # - name: Dockerhub login
+      #   env:
+      #     DOCKER_ACCOUNT: ${{secrets.DOCKER_ACCOUNT}}
+      #     DOCKER_PASSWD: ${{secrets.DOCKER_PASSWD}}
+      #   run: |
+      #     docker login -u DOCKER_ACCOUNT -p DOCKER_PASSWD
           
       - name: build docker image 
         run: |
