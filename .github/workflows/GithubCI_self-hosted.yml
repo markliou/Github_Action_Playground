@@ -35,3 +35,25 @@ jobs:
       # run the python unit test play script
       - name: run the unit test
         run: python3 unitest.py
+  
+  # building the docker image and push it to dockerhub using self-hosted node
+  Docker_image_builder:
+    runs-on: [dind]
+    steps:
+      - uses: actions/checkout@v2
+
+      # install the essential package
+      - name: Dockerhub login
+        env:
+          DOCKER_ACCOUNT: ${{secrets.DOCKER_ACCOUNT}}
+          DOCKER_PASSWD: ${{secrets.DOCKER_PASSWD}}
+        run: |
+          docker login -u DOCKER_ACCOUNT -p DOCKER_PASSWD
+          
+      - name: build docker image 
+        run: |
+          docker build -t markliou/dind .
+
+      - name: push to dockerhub
+        run: docker push markliou/dind
+  

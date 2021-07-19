@@ -2,6 +2,7 @@ import numpy as np
 
 def cal_10times(x):
     return x * 10
+    
 pass 
 
 def main():
