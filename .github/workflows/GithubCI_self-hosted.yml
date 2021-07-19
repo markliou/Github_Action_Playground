@@ -38,11 +38,11 @@ jobs:
   
   # building the docker image and push it to dockerhub using self-hosted node
   Docker_image_builder:
-    runs-on: [dind]
+    # runs-on: [dind]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      # install the essential package
       # - name: Dockerhub login
       #   env:
       #     DOCKER_ACCOUNT: ${{secrets.DOCKER_ACCOUNT}}
