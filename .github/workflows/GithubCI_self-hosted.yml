@@ -27,6 +27,7 @@ jobs:
       # install the essential package
       - name: install TF package
         run: |
+          pip3 install tensorflow
           pip3 install tensorflow-addons 
           pip3 install tensorflow-datasets 
       # Run the python script for test 
