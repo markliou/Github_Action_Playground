@@ -26,8 +26,10 @@ jobs:
 
       # install the essential package
       - name: install system package
-        run: apt update -y ; apt install python3-pip
-        
+        run: |
+          apt update -y 
+          apt install python3-pip
+
       - name: install TF package
         run: |
           pip3 install tensorflow-addons 
