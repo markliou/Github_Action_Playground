@@ -39,7 +39,7 @@ jobs:
   
   # building the docker image and push it to dockerhub using self-hosted node
   Docker_image_builder:
-    runs-on: dind
+    runs-on: self-hosted
     # runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
