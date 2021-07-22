@@ -25,6 +25,12 @@ jobs:
       - uses: actions/checkout@v2
 
       # install the essential package
+      - name: setup the env
+        run: |
+          apt update -y 
+          apt install python3-pip 
+
+      # install the essential package
       - name: install TF package
         run: |
           pip3 install tensorflow
@@ -39,8 +45,8 @@ jobs:
   
   # building the docker image and push it to dockerhub using self-hosted node
   Docker_image_builder:
-    # runs-on: self-hosted
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    # runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
