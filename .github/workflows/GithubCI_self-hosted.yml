@@ -26,8 +26,8 @@ jobs:
       # install the essential package
       - name: setup the env
         run: |
-          apt update -y 
-          apt install python3-pip 
+          sudo apt update -y 
+          sudo apt install python3-pip 
 
       # install the essential package
       - name: install TF package
