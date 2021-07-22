@@ -32,6 +32,12 @@ sudo docker run -it -v /var/run/docker.sock:/var/run/docker.sock --privileged ma
 ```shell
 ./config.sh --labels dind,self-hosted
 ```
-注意事項如下:
-1.github action的script不能使用root權限，所以要建構一個使用者帳號
-2.建構使用者帳號以後，要把該使用者加到docker使用者中( sudo usermod -aG docker $USER )
+github action的script不能使用root權限，所以要*修改run.sh*:
+```shell
+#user_id=`id -u`
+#if [ $user_id -eq 0 -a -z "$RUNNER_ALLOW_RUNASROOT" ]; then
+#    echo "Must not run interactively with sudo"
+#    exit 1
+#fi
+```
+全部註解掉以後就能使用root權限。因為在container裡面預設就是root，跑docker-in-docker也是使用root比較方便。
