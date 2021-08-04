@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: base-pod-example
+spec:
+  containers:
+  - name: base-pod-container-1
+    image: "ubuntu"
+    env:
+    - name: FIRSTHASH
+      value: "Hello 1"
+    - name: SECONDHASH
+      value: "Hello 2"
+    command: ["/usr/bin/bash", "-c"]
+    args: ["/usr/bin/echo \"${FIRSTHASH}\"", "/usr/bin/echo \"${SECONDHASH}\""]
+    args: ["sleep infinity" ]
+    
+    containers:
+  - name: base-pod-container-2
+    image: "ubuntu"
+    env:
+    - name: FIRSTHASH
+      value: "Hello 1"
+    - name: SECONDHASH
+      value: "Hello 2"
+    command: ["/usr/bin/bash", "-c"]
+    args: ["tail -f /dev/null"]
